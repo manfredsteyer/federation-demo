@@ -1,0 +1,22 @@
+{
+  "name": "federation-demo1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve:shell": "serve -l 5000",
+    "serve:mfe1": "serve ./dist/mfe1 -l 3000",
+    "build": "webpack --config webpack.shell.config.js && webpack --config webpack.mfe1.config.js",
+    "start": "concurrently \"npm run serve:shell\" \"npm run serve:mfe1\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "serve": "^11.3.0",
+    "webpack": "git://github.com/webpack/webpack.git#dev-1"
+  },
+  "dependencies": {
+    "webpack-cli": "^3.3.11"
+  }
+}
