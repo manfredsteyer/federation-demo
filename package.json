@@ -22,6 +22,6 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "rxjs": "^6.5.5"
+    "rxjs": "^7.0.0-beta.0"
   }
 }
