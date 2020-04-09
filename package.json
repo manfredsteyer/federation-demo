@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve:shell": "serve -l 5000",
+    "serve:shell": "serve ./dist/shell -l 5000",
     "serve:mfe1": "serve ./dist/mfe1 -l 3000",
+    "serve:dist": "concurrently \"npm run serve:shell\" \"npm run serve:mfe1\"",
     "build": "webpack --config webpack.shell.config.js && webpack --config webpack.mfe1.config.js",
-    "start:build": "concurrently \"npm run serve:shell\" \"npm run serve:mfe1\"",
     "start": "concurrently \"webpack-dev-server --config webpack.mfe1.config.js\" \"webpack-dev-server --config webpack.shell.config.js\""
   },
   "author": "",
