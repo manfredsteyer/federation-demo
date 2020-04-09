@@ -1,13 +1,16 @@
-import { fromEvent } from 'rxjs';
+// static imports do currently not work with shared libs,
+// hence the dynamic one inside an async IIFE below
+// import * as rxjs from 'rxjs';
 
-const elm = document.createElement('a');
-elm.innerText = 'Click me!';
-// elm.addEventListener('click', function() {
-//     import('mfe1/component');
-// });
+(async function() { 
+    const rxjs = await import('rxjs');
 
-fromEvent(elm, 'click').subscribe(function() {
-    import('mfe1/component');
-});
+    const elm = document.createElement('a');
+    elm.innerText = 'Click me!';
 
-document.body.appendChild(elm);
+    rxjs.fromEvent(elm, 'click').subscribe(function() {
+        import('mfe1/component');
+    });
+
+    document.body.appendChild(elm);
+})();

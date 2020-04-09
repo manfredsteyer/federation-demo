@@ -1,11 +1,17 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+console.log({__dirname});
 const shell = {
   entry: "./shell/main",
   mode: "development",
+  devServer: {
+    contentBase: path.join(__dirname, "dist/shell"),
+    port: 5000
+  },
   output: {
-    publicPath: "http://localhost:5000/dist/shell/",
+    publicPath: "http://localhost:5000/",
     path: path.join(__dirname, "dist/shell"),
     filename: '[name].js'
   },
@@ -16,7 +22,10 @@ const shell = {
       remotes: {
         mfe1: "mfe1"
       },
-      shared: ["rxjs"]
+      // shared: ["rxjs"]
+    }),
+    new HtmlWebpackPlugin({
+      template: "./shell/index.html"
     })
   ]
 };
@@ -25,7 +34,7 @@ const mfe1 =  {
     entry: "./mfe1/main",
     mode: "development",
     devServer: {
-      contentBase: path.join(__dirname, "dist"),
+      contentBase: path.join(__dirname, "dist/mfe1"),
       port: 3000
     },
     output: {
@@ -41,8 +50,12 @@ const mfe1 =  {
         exposes: {
           component: "./mfe1/component"
         },
-        shared: ["rxjs"]
+        // shared: ["rxjs"]
+      }),
+      new HtmlWebpackPlugin({
+        template: "./mfe1/index.html"
       })
+  
     ]
   };
 

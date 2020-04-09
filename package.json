@@ -7,18 +7,21 @@
     "serve:shell": "serve -l 5000",
     "serve:mfe1": "serve ./dist/mfe1 -l 3000",
     "build": "webpack --config webpack.shell.config.js && webpack --config webpack.mfe1.config.js",
-    "start": "concurrently \"npm run serve:shell\" \"npm run serve:mfe1\""
+    "start:build": "concurrently \"npm run serve:shell\" \"npm run serve:mfe1\"",
+    "start": "concurrently \"webpack-dev-server --config webpack.mfe1.config.js\" \"webpack-dev-server --config webpack.shell.config.js\""
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "html-webpack-plugin": "git://github.com/ScriptedAlchemy/html-webpack-plugin.git#master",
     "npm-run-all": "^4.1.5",
     "serve": "^11.3.0",
     "webpack": "git://github.com/webpack/webpack.git#dev-1",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "concurrently": "^5.1.0",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "rxjs": "^6.5.5",
-    "webpack-cli": "^3.3.11"
+    "rxjs": "^6.5.5"
   }
 }

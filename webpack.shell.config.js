@@ -1,11 +1,16 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const shell = {
   entry: "./shell/main",
   mode: "development",
+  devServer: {
+    contentBase: path.join(__dirname, "dist/shell"),
+    port: 5000
+  },
   output: {
-    publicPath: "http://localhost:5000/dist/shell/",
+    publicPath: "http://localhost:5000/",
     path: path.join(__dirname, "dist/shell"),
     filename: '[name].js'
   },
@@ -16,7 +21,10 @@ const shell = {
       remotes: {
         mfe1: "mfe1"
       },
-      // shared: ["rxjs"]
+      shared: ["rxjs"]
+    }),
+    new HtmlWebpackPlugin({
+      template: "./shell/index.html"
     })
   ]
 };
