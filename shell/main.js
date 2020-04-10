@@ -2,15 +2,35 @@
 // hence the dynamic one inside an async IIFE below
 // import * as rxjs from 'rxjs';
 
+const container = document.getElementById('container');
+const flightsLink = document.getElementById('flights');
+const homeLink = document.getElementById('home');
+
+function removeFirstChild() {
+    if (container.firstChild) {
+        container.firstChild.remove();
+    }
+}
+
+function displayWelcomeMessage() {
+    removeFirstChild();
+    this.container.innerHTML = `<h1>Welcome!</h1>`;
+}
+
 (async function() { 
     const rxjs = await import('rxjs');
 
-    const elm = document.createElement('a');
-    elm.innerText = 'Click me!';
+    displayWelcomeMessage();
 
-    rxjs.fromEvent(elm, 'click').subscribe(function() {
-        import('mfe1/component');
+    rxjs.fromEvent(flightsLink, 'click').subscribe(async _ => {
+        const module = await import('mfe1/component');
+        const elm = document.createElement(module.elementName);
+        removeFirstChild();       
+        container.appendChild(elm);
     });
 
-    document.body.appendChild(elm);
+    rxjs.fromEvent(homeLink, 'click').subscribe(_ => {
+        displayWelcomeMessage();
+    })
+
 })();

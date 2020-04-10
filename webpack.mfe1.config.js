@@ -1,6 +1,7 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mfe1 =  {
   entry: "./mfe1/main",
@@ -9,12 +10,21 @@ const mfe1 =  {
     contentBase: path.join(__dirname, "dist/mfe1"),
     port: 3000
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
+  },    
   output: {
       publicPath: "http://localhost:3000/",
       path: path.join(__dirname, "dist/mfe1"),
       filename: '[name].js'
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new ModuleFederationPlugin({
       name: "mfe1",
       library: { type: "var", name: "mfe1" },
@@ -22,13 +32,12 @@ const mfe1 =  {
       exposes: {
         component: "./mfe1/component"
       },
-        shared: ["rxjs"]
+      shared: ["rxjs"]
     }),
     new HtmlWebpackPlugin({
       template: "./mfe1/index.html"
-    })
-
-  ]
+    }),
+  ]    
 };
 
 module.exports = mfe1;
