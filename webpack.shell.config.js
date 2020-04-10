@@ -4,7 +4,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const shell = {
-  entry: ["./shell/main", "./shell/styles.css"],
+  entry: [
+    "./polyfills",
+    "./shell/main",
+    "./shell/styles.css"
+  ],
   mode: "development",
   devServer: {
     contentBase: path.join(__dirname, "dist/shell"),
@@ -42,7 +46,7 @@ const shell = {
       shared: ["rxjs"]
     }),
     new HtmlWebpackPlugin({
-      template: "./shell/index.html"
+      template: "./shell/index.html",
     })
   ]
 };
