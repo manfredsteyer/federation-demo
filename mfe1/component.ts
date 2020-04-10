@@ -1,8 +1,6 @@
 // static imports do currently not work with shared libs,
 // hence the dynamic one inside an async IIFE below
-// import * as rxjs from 'rxjs';
-
-
+import * as rxjs from 'rxjs';
 
 class Microfrontend1 extends HTMLElement {
     
@@ -15,7 +13,7 @@ class Microfrontend1 extends HTMLElement {
         const styleText = require('!raw-loader!./styles.css');
 
         this.shadowRoot.innerHTML = `
-            <style>${styleText}</style>
+            <style>${styleText.default}</style>
             <div id="container">
                 <h1>Flights</h1>
 
@@ -36,7 +34,7 @@ class Microfrontend1 extends HTMLElement {
         const terms = this.shadowRoot.getElementById('terms');
         const container = this.shadowRoot.getElementById('container');
 
-        const rxjs = await require('rxjs');
+        // const rxjs = await require('rxjs');
         rxjs.fromEvent(search, 'click').subscribe(_ => {
             alert('Not implemented for this demo!');
         });

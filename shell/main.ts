@@ -1,10 +1,6 @@
 // static imports do currently not work with shared libs,
 // hence the dynamic one inside an async IIFE below
-
-// import * as rxjs from 'rxjs';
-
-// Tell typescript about our external module
-
+//import * as rxjs from 'rxjs';
 
 const container = document.getElementById('container');
 const flightsLink = document.getElementById('flights');
@@ -18,7 +14,7 @@ function removeFirstChild() {
 
 function displayWelcomeMessage() {
     removeFirstChild();
-    this.container.innerHTML = `<h1>Welcome!</h1>`;
+    container.innerHTML = `<h1>Welcome!</h1>`;
 }
 
 (async function() { 

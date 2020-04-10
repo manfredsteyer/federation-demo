@@ -39,7 +39,7 @@ const shell = {
       remotes: {
         mfe1: "mfe1"
       },
-      // shared: ["rxjs"]
+      shared: ["rxjs"]
     }),
     new HtmlWebpackPlugin({
       template: "./shell/index.html"

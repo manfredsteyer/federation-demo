@@ -40,7 +40,7 @@ const mfe1 =  {
       exposes: {
         component: "./mfe1/component"
       },
-      // shared: ["rxjs"]
+        shared: ["rxjs"]
     }),
     new HtmlWebpackPlugin({
       template: "./mfe1/index.html"
