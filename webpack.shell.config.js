@@ -16,7 +16,15 @@ const shell = {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },      
     ],
+  },  
+  resolve: {
+    extensions: [ '.ts', '.js' ],
   },  
   output: {
     publicPath: "http://localhost:5000/",
@@ -31,7 +39,7 @@ const shell = {
       remotes: {
         mfe1: "mfe1"
       },
-      shared: ["rxjs"]
+      // shared: ["rxjs"]
     }),
     new HtmlWebpackPlugin({
       template: "./shell/index.html"

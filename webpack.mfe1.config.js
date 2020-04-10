@@ -16,6 +16,11 @@ const mfe1 =  {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },        
     ],
   },    
   output: {
@@ -23,6 +28,9 @@ const mfe1 =  {
       path: path.join(__dirname, "dist/mfe1"),
       filename: '[name].js'
   },
+  resolve: {
+    extensions: [ '.ts', '.js' ],
+  },  
   plugins: [
     new MiniCssExtractPlugin(),
     new ModuleFederationPlugin({
@@ -32,7 +40,7 @@ const mfe1 =  {
       exposes: {
         component: "./mfe1/component"
       },
-      shared: ["rxjs"]
+      // shared: ["rxjs"]
     }),
     new HtmlWebpackPlugin({
       template: "./mfe1/index.html"

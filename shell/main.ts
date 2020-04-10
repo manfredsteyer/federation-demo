@@ -1,6 +1,10 @@
 // static imports do currently not work with shared libs,
 // hence the dynamic one inside an async IIFE below
+
 // import * as rxjs from 'rxjs';
+
+// Tell typescript about our external module
+
 
 const container = document.getElementById('container');
 const flightsLink = document.getElementById('flights');

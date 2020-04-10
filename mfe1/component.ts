@@ -2,7 +2,7 @@
 // hence the dynamic one inside an async IIFE below
 // import * as rxjs from 'rxjs';
 
-import styleText from '!raw-loader!./styles.css';
+
 
 class Microfrontend1 extends HTMLElement {
     
@@ -11,17 +11,11 @@ class Microfrontend1 extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
 
-    setStyle(styleText) {
-        const css = new CSSStyleSheet();
-        css.replaceSync(styleText);
-        this.shadowRoot.adoptedStyleSheets = [css];
-    }
-
     async connectedCallback() {
-
-        this.setStyle(styleText);
+        const styleText = require('!raw-loader!./styles.css');
 
         this.shadowRoot.innerHTML = `
+            <style>${styleText}</style>
             <div id="container">
                 <h1>Flights</h1>
 
@@ -42,7 +36,7 @@ class Microfrontend1 extends HTMLElement {
         const terms = this.shadowRoot.getElementById('terms');
         const container = this.shadowRoot.getElementById('container');
 
-        const rxjs = await import('rxjs');
+        const rxjs = await require('rxjs');
         rxjs.fromEvent(search, 'click').subscribe(_ => {
             alert('Not implemented for this demo!');
         });
