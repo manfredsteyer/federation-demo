@@ -25,6 +25,7 @@ const mfe1 =  {
   },    
   output: {
       publicPath: "http://localhost:3000/",
+      uniqueName: 'mfe1',
       path: path.join(__dirname, "dist/mfe1"),
       filename: '[name].js'
   },
@@ -38,7 +39,7 @@ const mfe1 =  {
       library: { type: "var", name: "mfe1" },
       filename: "remoteEntry.js",
       exposes: {
-        component: "./mfe1/component"
+        "./component": "./mfe1/component"
       },
         shared: ["rxjs"]
     }),

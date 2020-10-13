@@ -1,1 +1,1 @@
-require('./component');
+import('./component');

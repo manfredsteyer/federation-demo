@@ -28,6 +28,7 @@ const shell = {
   },  
   output: {
     publicPath: "http://localhost:5000/",
+    uniqueName: 'shell',
     path: path.join(__dirname, "dist/shell"),
     filename: '[name].js'
   },
@@ -35,6 +36,7 @@ const shell = {
     new MiniCssExtractPlugin(),
     new ModuleFederationPlugin({
       name: "shell",
+      remoteType: 'var',
       library: { type: "var", name: "shell" },
       remotes: {
         mfe1: "mfe1"
