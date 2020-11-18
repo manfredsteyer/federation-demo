@@ -1,11 +1,13 @@
-# Minimal Demo for Webpack Module Federation
+# Sharing local Libs
 
-## Build and Start
+- Start
+  - npm run serve:shell
+  - npm run serve:mfe1
 
-```
-npm i
-npm run build
-npm run serve:dist
-```
+- Shared-Lib
+  - Shared in both webpack configs
+  - Mappings in tsconfig.json
 
-> When writing this, there have been issues with webpack-dev-server, hence these instructions bypass it.
+- Test
+  - After loading mfe1 into the shell (2nd menu item), mfe1 should display "Hello from the Shell".
+

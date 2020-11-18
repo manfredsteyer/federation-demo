@@ -41,7 +41,15 @@ const shell = {
       remotes: {
         mfe1: "mfe1"
       },
-      shared: ["rxjs"]
+      shared: {
+        "rxjs": {},
+        "libs/shared-lib/index.ts": {
+          import: "shared-lib",
+          packageName: "shared-lib",
+          shareKey: "shared-lib",
+          requiredVersion: "0.0.1" // or false
+        }
+      }
     }),
     new HtmlWebpackPlugin({
       template: "./shell/index.html"

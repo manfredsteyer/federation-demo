@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve:shell": "serve ./dist/shell -l 5000",
-    "serve:mfe1": "serve ./dist/mfe1 -l 3000",
+    "serve:shell": "npx webpack serve --config webpack.shell.config.js",
+    "serve:mfe1": "npx webpack serve --config webpack.mfe1.config.js",
     "serve:dist": "concurrently \"npm run serve:shell\" \"npm run serve:mfe1\"",
     "build": "webpack --config webpack.shell.config.js && webpack --config webpack.mfe1.config.js",
     "start": "concurrently \"webpack-dev-server --config webpack.mfe1.config.js\" \"webpack-dev-server --config webpack.shell.config.js\""
@@ -14,18 +14,18 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.3.0",
-    "css-loader": "^4.3.0",
+    "css-loader": "^5.0.1",
     "html-webpack-plugin": "git://github.com/ScriptedAlchemy/html-webpack-plugin.git#master",
-    "mini-css-extract-plugin": "^1.0.0",
+    "mini-css-extract-plugin": "^1.3.1",
     "npm-run-all": "^4.1.5",
     "raw-loader": "^4.0.2",
     "serve": "^11.3.2",
     "style-loader": "^2.0.0",
-    "ts-loader": "^8.0.5",
-    "typescript": "^4.0.3",
-    "webpack": "^5.0.0",
-    "webpack-cli": "^4.0.0",
-    "webpack-dev-server": "3.9.0"
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.0.5",
+    "webpack": "^5.5.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "3.11.0"
   },
   "dependencies": {
     "rxjs": "^7.0.0-beta.0"

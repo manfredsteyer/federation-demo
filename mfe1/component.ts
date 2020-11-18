@@ -1,6 +1,9 @@
 // static imports do currently not work with shared libs,
 // hence the dynamic one inside an async IIFE below
 import * as rxjs from 'rxjs';
+import * as sharedLib from 'shared-lib';
+
+const sharedData = sharedLib.getData();
 
 class Microfrontend1 extends HTMLElement {
     
@@ -16,7 +19,9 @@ class Microfrontend1 extends HTMLElement {
             <style>${styleText.default}</style>
             <div id="container">
                 <h1>Flights</h1>
-
+                <div>
+                    Message: ${sharedData}
+                </div>
                 <div>
                     <input type="text" placeholder="From">
                 </div>
