@@ -1,4 +1,4 @@
-import * as rxjs from 'rxjs';
+import { fromEvent } from 'rxjs';
 import * as sharedLib  from 'shared-lib';
 
 const container = document.getElementById('container');
@@ -23,14 +23,14 @@ function displayWelcomeMessage() {
 
     displayWelcomeMessage();
 
-    rxjs.fromEvent(flightsLink, 'click').subscribe(async _ => {
+    fromEvent(flightsLink, 'click').subscribe(async _ => {
         const module = await import('mfe1/component');
         const elm = document.createElement(module.elementName);
         removeFirstChild();       
         container.appendChild(elm);
     });
 
-    rxjs.fromEvent(homeLink, 'click').subscribe(_ => {
+    fromEvent(homeLink, 'click').subscribe(_ => {
         displayWelcomeMessage();
     })
 

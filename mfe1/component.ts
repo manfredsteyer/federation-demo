@@ -1,6 +1,7 @@
 // static imports do currently not work with shared libs,
 // hence the dynamic one inside an async IIFE below
-import * as rxjs from 'rxjs';
+
+import { fromEvent } from 'rxjs';
 import * as sharedLib from 'shared-lib';
 
 const sharedData = sharedLib.getData();
@@ -39,12 +40,11 @@ class Microfrontend1 extends HTMLElement {
         const terms = this.shadowRoot.getElementById('terms');
         const container = this.shadowRoot.getElementById('container');
 
-        // const rxjs = await require('rxjs');
-        rxjs.fromEvent(search, 'click').subscribe(_ => {
+        fromEvent(search, 'click').subscribe(_ => {
             alert('Not implemented for this demo!');
         });
 
-        rxjs.fromEvent(terms, 'click').subscribe(async _ => {
+        fromEvent(terms, 'click').subscribe(async _ => {
             const module = await import('./lazy');
             const elm = document.createElement(module.elementName);
             container.appendChild(elm);
