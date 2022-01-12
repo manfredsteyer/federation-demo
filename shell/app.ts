@@ -1,5 +1,5 @@
 import * as rxjs from 'rxjs';
-import * as sharedLib  from 'shared-lib';
+// import * as sharedLib  from 'shared-lib';
 
 const container = document.getElementById('container');
 const flightsLink = document.getElementById('flights');
@@ -19,7 +19,7 @@ function displayWelcomeMessage() {
 (async function() { 
    
    
-    sharedLib.setData('Hello from the Shell!');
+    // sharedLib.setData('Hello from the Shell!');
 
     displayWelcomeMessage();
 

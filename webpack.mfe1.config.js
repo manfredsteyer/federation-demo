@@ -41,15 +41,15 @@ const mfe1 =  {
       exposes: {
         "./component": "./mfe1/component"
       },
-      shared: {
-        "rxjs": {},
-        "shared-lib": {
-          import: "shared-lib",
-          packageName: "shared-lib",
-          shareKey: "shared-lib",
-          requiredVersion: "0.0.1" // or false
-        }
-      }
+      // shared: {
+      //   "rxjs": {},
+      //   "shared-lib": {
+      //     import: "shared-lib",
+      //     packageName: "shared-lib",
+      //     shareKey: "shared-lib",
+      //     requiredVersion: "0.0.1" // or false
+      //   }
+      // }
     }),
     new HtmlWebpackPlugin({
       template: "./mfe1/index.html"

@@ -8,6 +8,8 @@
     "serve:mfe1": "npx webpack serve --config webpack.mfe1.config.js",
     "serve:dist": "concurrently \"npm run serve:shell\" \"npm run serve:mfe1\"",
     "build": "webpack --config webpack.shell.config.js && webpack --config webpack.mfe1.config.js",
+    "build:shell": "webpack --config webpack.shell.config.js",
+    "build:mfe1": "webpack --config webpack.mfe1.config.js",
     "start": "concurrently \"webpack-dev-server --config webpack.mfe1.config.js\" \"webpack-dev-server --config webpack.shell.config.js\""
   },
   "author": "",
@@ -28,6 +30,7 @@
     "webpack-dev-server": "3.11.0"
   },
   "dependencies": {
-    "rxjs": "^7.0.0-beta.0"
+    "rxjs": "^7.0.0-beta.0",
+    "zone.js": "^0.11.4"
   }
 }
