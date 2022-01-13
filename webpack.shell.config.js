@@ -47,18 +47,10 @@ const shell = {
       },
       shared: {
         "rxjs": {
-          eager: true
+          eager: true,
+          singleton: true,
         },
       }
-      // shared: {
-      //   "rxjs": {},
-      //   "libs/shared-lib/index.ts": {
-      //     import: "shared-lib",
-      //     packageName: "shared-lib",
-      //     shareKey: "shared-lib",
-      //     requiredVersion: "0.0.1" // or false
-      //   }
-      //}
     }),
     new HtmlWebpackPlugin({
       template: "./shell/index.html"
